@@ -36,6 +36,11 @@ function ParticlesCanvas() {
         color: {
           value: "#105183",
         },
+        size: "cover",
+      },
+      fullScreen: {
+        enable: true,
+        zIndex: -1,
       },
       fpsLimit: 120,
       interactivity: {
