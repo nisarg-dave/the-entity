@@ -1,5 +1,5 @@
-import MissionButton from "@/components/MissionButton";
-import MissionCard from "@/components/MissionCard";
+import MissionButton from "@/components/mission/MissionButton";
+import MissionCard from "@/components/mission/MissionCard";
 
 export default function Home() {
   return (
