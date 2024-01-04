@@ -1,25 +1,33 @@
 "use client";
 import { TypeAnimation } from "react-type-animation";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
 
-function EntityStatements({ generatedRiddle }: { generatedRiddle: string }) {
+function EntityStatements({
+  riddles,
+}: {
+  riddles: { riddle: string; answer: string; message: string }[];
+}) {
   const router = useRouter();
-  const [riddle, setRiddle] = useState("");
+  const [riddle, setRiddle] = useState(
+    "Persistent, aren't you, Mr. Hunt? But you've underestimated my reach. This realm is my playground. To destroy me, you must first prove your worth."
+  );
 
-  useMemo(() => {
-    setRiddle(generatedRiddle);
-    // router.refresh();
-  }, [generatedRiddle]);
+  console.log(riddles);
+
+  useEffect(() => {
+    setRiddle(riddles[0].riddle);
+  }, []);
+
+  // useMemo(() => {
+  //   setRiddle(generatedRiddle);
+  //   // router.refresh();
+  // }, [generatedRiddle]);
 
   return (
     <TypeAnimation
-      sequence={[
-        "Persistent, aren't you, Mr. Hunt? But you've underestimated my reach. This realm is my playground. To destroy me, you must first prove your worth.",
-        3000,
-        `${riddle}`,
-        3000,
-      ]}
+      sequence={[`${riddle}`, 3000]}
       wrapper="span"
       speed={30}
       style={{ fontSize: "2em", display: "inline-block" }}

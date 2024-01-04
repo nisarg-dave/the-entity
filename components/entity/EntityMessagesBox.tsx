@@ -25,7 +25,7 @@ async function getRiddles() {
   });
 
   const msg =
-    "Now Entity, provide me with one difficult riddle, the answers and a cryptic message for the correct answer to show that your voice is shifting in tone and pitch and you are becomeing more agited all in JSON format. Don't give an explanation, don't use the word json in it and don't give the riddles and answers a number like riddle1, riddle2 etc just use the word riddle and answer. The riddle shouldn't be anything related about the Entity.";
+    "Now Entity, provide me with 5 difficult riddles, the answers for each and a cryptic message for each correct answer to show that your voice is shifting in tone and pitch and you are becomeing more agited all in JSON format inside a JavaScript array. Don't give an explanation, don't use the word json in it, don't use the word array in it, don't use the word javascript in it and don't give the riddles and answers a number like riddle1, riddle2 etc just use the word riddle and answer. The riddle shouldn't be anything related about the Entity.";
 
   const result = await chat.sendMessage(msg);
   return result.response;
@@ -34,12 +34,13 @@ async function getRiddles() {
 async function EntityMessagesBox() {
   const response = await getRiddles();
   const text = response.text();
-  const riddle = JSON.parse(text.replaceAll("```", "")).riddle;
+  const riddles = JSON.parse(text.replaceAll("```", ""));
+  // const riddle = JSON.parse(text.replaceAll("```", "")).riddle;
 
   return (
     <Card className="bg-muted-foreground opacity-40 text-secondary w-8/12 h-96 p-3 lg:overflow-hidden overflow-y-scroll">
       <CardContent>
-        <EntityStatements generatedRiddle={riddle} />
+        <EntityStatements riddles={riddles} />
       </CardContent>
     </Card>
   );
