@@ -1,4 +1,4 @@
-import ParticlesCanvas from "@/components/ParticlesCanvas";
+import ParticlesCanvas from "@/components/entity/ParticlesCanvas";
 
 function layout({ children }: { children: React.ReactNode }) {
   return (
