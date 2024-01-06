@@ -6,7 +6,10 @@ import { useRouter } from "next/navigation";
 function MissionButton() {
   const router = useRouter();
   return (
-    <Button className="text-lg" onClick={() => router.push("/entity")}>
+    <Button
+      className="text-sm lg:text-lg"
+      onClick={() => router.push("/entity")}
+    >
       Begin Mission
     </Button>
   );
