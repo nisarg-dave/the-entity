@@ -6,12 +6,13 @@ import { useRouter } from "next/navigation";
 
 function MissionButton() {
   const router = useRouter();
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
-  setTimeout(() => {
-    setDisabled(false);
-  }, 180000);
+  // setTimeout(() => {
+  //   setDisabled(false);
+  // }, 180000);
 
+  // setDisabled(true);
   return (
     <Button
       disabled={disabled}

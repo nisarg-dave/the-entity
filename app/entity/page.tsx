@@ -1,10 +1,9 @@
-import EntityMessagesBox from "@/components/entity/EntityMessagesBox";
-import React from "react";
+import EntityPage from "@/components/entity/EntityPage";
 
 function page() {
   return (
-    <main className="flex flex-col justify-center items-center min-h-screen">
-      <EntityMessagesBox />
+    <main className="">
+      <EntityPage />
     </main>
   );
 }
