@@ -1,12 +1,11 @@
 "use client";
-import { TypeAnimation } from "react-type-animation";
 import { useState, useMemo, useEffect } from "react";
 import {
   useRiddleAnswer,
-  useCurrentRiddles,
   useRiddle,
-  useRiddleNumber,
+  useCurrentRiddles,
   useRiddleAnswerStoreActions,
+  useRiddleNumber,
 } from "@/store/store";
 
 interface EntityRiddlesProps {
@@ -14,35 +13,53 @@ interface EntityRiddlesProps {
 }
 
 function EntityRiddles({ riddles }: EntityRiddlesProps) {
-  const riddleAnswer = useRiddleAnswer();
+  // const [prevAnswer, setPrevAnswer] = useState("answer");
   const currentRiddles = useCurrentRiddles();
-  const riddle = useRiddle();
   const riddleNumber = useRiddleNumber();
+  const riddleAnswer = useRiddleAnswer();
+  const riddle = useRiddle();
 
-  const { incrementRiddleNumber, setCurrentRiddles, setRiddle } =
-    useRiddleAnswerStoreActions();
+  const {
+    incrementRiddleNumber,
+    setCurrentRiddles,
+    setRiddle,
+    setCrypticMessage,
+    setIncorrectMessage,
+    setWinningMessage,
+  } = useRiddleAnswerStoreActions();
 
   useEffect(() => {
-    setCurrentRiddles(riddles);
-    setRiddle();
-
-    const timeoutId = setTimeout(() => {
-      console.log("reached here");
-      incrementRiddleNumber();
+    if (riddleAnswer !== "") {
+      if (riddleAnswer === currentRiddles[riddleNumber].answer) {
+        if (riddleNumber === 5) {
+          setWinningMessage();
+        } else {
+          setCrypticMessage();
+          setTimeout(() => {
+            incrementRiddleNumber();
+            setRiddle();
+          }, 10000);
+        }
+      } else {
+        setIncorrectMessage();
+        setTimeout(() => {
+          setRiddle();
+        }, 5000);
+      }
+    } else {
+      setCurrentRiddles(riddles);
       setRiddle();
-    }, 5000);
-    return () => clearTimeout(timeoutId);
-  }, []);
+      setTimeout(() => {
+        incrementRiddleNumber();
+        setRiddle();
+      }, 10000);
+    }
+  }, [riddleAnswer]);
 
   return (
-    // <TypeAnimation
-    //   sequence={[`${riddle}`, 3000]}
-    //   wrapper="span"
-    //   speed={30}
-    //   style={{ fontSize: "2em", display: "inline-block" }}
-    //   repeat={0}
-    // />
-    <>{riddle}</>
+    <>
+      <p className="">{riddle}</p>
+    </>
   );
 }
 
