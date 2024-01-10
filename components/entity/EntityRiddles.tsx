@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo, useEffect } from "react";
+import { useEffect } from "react";
 import {
   useRiddleAnswer,
   useRiddle,
@@ -13,7 +13,6 @@ interface EntityRiddlesProps {
 }
 
 function EntityRiddles({ riddles }: EntityRiddlesProps) {
-  // const [prevAnswer, setPrevAnswer] = useState("answer");
   const currentRiddles = useCurrentRiddles();
   const riddleNumber = useRiddleNumber();
   const riddleAnswer = useRiddleAnswer();
@@ -47,6 +46,7 @@ function EntityRiddles({ riddles }: EntityRiddlesProps) {
         }, 5000);
       }
     } else {
+      sessionStorage.setItem("riddles", JSON.stringify(riddles));
       setCurrentRiddles(riddles);
       setRiddle();
       setTimeout(() => {
@@ -58,7 +58,7 @@ function EntityRiddles({ riddles }: EntityRiddlesProps) {
 
   return (
     <>
-      <p className="">{riddle}</p>
+      <p>{riddle}</p>
     </>
   );
 }

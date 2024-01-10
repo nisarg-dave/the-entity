@@ -12,7 +12,6 @@ function MissionButton() {
     setDisabled(false);
   }, 180000);
 
-  setDisabled(true);
   return (
     <Button
       disabled={disabled}
