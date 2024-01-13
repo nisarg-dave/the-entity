@@ -46,7 +46,6 @@ function EntityRiddles({ riddles }: EntityRiddlesProps) {
         }, 5000);
       }
     } else {
-      sessionStorage.setItem("riddles", JSON.stringify(riddles));
       setCurrentRiddles(riddles);
       setRiddle();
       setTimeout(() => {

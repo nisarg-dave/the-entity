@@ -71,6 +71,9 @@ export const useRiddle = () => useRiddleAnswerStore((state) => state.riddle);
 export const useRiddleAnswerStoreActions = () =>
   useRiddleAnswerStore((state) => state.actions);
 
-if (process.env.NODE_ENV === "development") {
+if (
+  process.env.NODE_ENV === "development" ||
+  process.env.NODE_ENV === "production"
+) {
   mountStoreDevtool("Store", useRiddleAnswerStore);
 }
