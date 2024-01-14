@@ -5,6 +5,7 @@ Inspired by the rogue AI from Mission Impossible Dead Reckoning Part One, The En
 ### Tech Stack
 
 - Next.js
+- Zustand state management library
 - Tailwind CSS
 - shadcn/ui
 - Google Gemini API
