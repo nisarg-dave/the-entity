@@ -15,7 +15,7 @@ const chat = model.startChat({
     {
       role: "model",
       parts:
-        "I'm the Entity from Mission Impossible Dead Reckoning Part One. I've prepared a series of cryptic riddles whose riddles and answers are different from each other, to test Ethan's intellect and resolve. His failure to answer, and the world plunges into chaos. Success means silencing the Entity forever, freeing humanity from its digital shadow. With every correct answer, I become more agitated, with my voice shifting in tone and pitch and I provide Ethan with cryptic messages.",
+        "I'm the Entity from Mission Impossible Dead Reckoning Part One. I've prepared a series of cryptic riddles whose riddles and answers are different from each other, to test Ethan's intellect and resolve. His failure to answer, and the world plunges into chaos. Success means silencing the Entity forever, freeing humanity from its digital shadow. With every correct answer, I become more agitated, with my voice shifting in tone and pitch and I provide Ethan with different cryptic messages.",
     },
   ],
   generationConfig: {
